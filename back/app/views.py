@@ -55,5 +55,5 @@ def user_id(request, id):
         return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
-       serializer = UserSerializer(user, context={'request':request})
+       serializer = UserLoginSerializer(user, context={'request':request})
        return Response(serializer.data)

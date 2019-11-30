@@ -14,6 +14,7 @@ export class NotesComponent implements OnInit {
 
   ngOnInit() {
     this.getNotes();
+    console.log(this.notes)
   }
   
   getNotes() {

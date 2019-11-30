@@ -1,1 +1,9 @@
-<p>notes works!</p>
+<mat-list *ngFor="let note of notes" color='primary'>
+    <mat-list-item>{{ note.title }}
+        <span style="flex: 1 1 auto;"></span>
+        <a routerLink="/notes-detail/{{ note.id }}" routerLinkActive="active"><i class="material-icons">search</i></a>
+        <i class="material-icons" style="margin-left: 10px;">edit</i>
+        <i class="material-icons" style="margin-left: 10px;">delete</i>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>

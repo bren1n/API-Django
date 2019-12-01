@@ -1,1 +1,14 @@
-<p>notes-new works!</p>
+<div style="display: flex;
+align-items: center;
+flex-direction: column;">
+    <br>
+    <mat-form-field style="width: 30%">
+        <input matInput placeholder="Title" [(ngModel)]="note.title">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 30%">
+        <textarea matInput placeholder="Content" [(ngModel)]="note.content"></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="addNote(note)">Add note</button>
+</div>

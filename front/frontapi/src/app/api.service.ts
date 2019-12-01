@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Note } from 'src/app/note';
 
@@ -12,12 +11,30 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getNotes() {
-    return this.http.get<any[]>(`${this.apiUrl}` + '/notes');
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
   }
 
-  getNote(id: Number) {
-    return this.http.get<Note>(`${this.apiUrl}` + '/notes/' + `${id}`)
+  getNotes() {
+    return this.http.get<any[]>(`${this.apiUrl}/notes`);
+  }
+
+  getNote(id) {
+    return this.http.get<Note>(`${this.apiUrl}/notes/${id}`)
+  }
+
+  addNote(note) {
+    return this.http.post<Note>(`${this.apiUrl}/notes/`, JSON.stringify(note), this.httpOptions)
+  }
+
+  updateNote(id, note) {
+    return this.http.put<Note>(`${this.apiUrl}/notes/${id}`, JSON.stringify(note), this.httpOptions)
+  }
+
+  deleteNote(id) {
+    return this.http.delete<Note>(`${this.apiUrl}/notes/${id}`)
   }
 
 }

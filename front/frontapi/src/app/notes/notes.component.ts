@@ -14,11 +14,15 @@ export class NotesComponent implements OnInit {
 
   ngOnInit() {
     this.getNotes();
-    console.log(this.notes)
   }
-  
+
   getNotes() {
     this.api.getNotes().subscribe(data => this.notes = data);
   }
 
+  deleteNote(id) {
+    if (window.confirm('Are you sure, you want to delete?')) {
+      return this.api.deleteNote(id).subscribe(data => { this.getNotes() });
+    }
+  }
 }

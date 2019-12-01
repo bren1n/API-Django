@@ -48,9 +48,8 @@ def notes(request):
 
 @api_view(['GET'])
 def user_id(request, username, password):
-    try:
-        user = authenticate(username=username, password=password)
-    except user is None:
+    user = authenticate(username=username, password=password)
+    if not user:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':

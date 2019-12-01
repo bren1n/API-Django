@@ -18,6 +18,7 @@ import { NotesComponent } from './notes/notes.component';
 import { NotesDetailComponent } from './notes-detail/notes-detail.component';
 import { NotesNewComponent } from './notes-new/notes-new.component';
 import { NotesEditComponent } from './notes-edit/notes-edit.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NotesEditComponent } from './notes-edit/notes-edit.component';
     NotesComponent,
     NotesDetailComponent,
     NotesNewComponent,
-    NotesEditComponent
+    NotesEditComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

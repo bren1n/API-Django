@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Note } from 'src/app/note';
+import { User } from 'src/app/user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +37,10 @@ export class ApiService {
 
   deleteNote(id) {
     return this.http.delete<Note>(`${this.apiUrl}/notes/${id}`)
+  }
+
+  authenticateUser(username, password) {
+    return this.http.get<User>(`${this.apiUrl}/users/${username}/${password}`)
   }
 
 }

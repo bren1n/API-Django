@@ -4,6 +4,7 @@ import { NotesComponent } from './notes/notes.component'
 import { NotesDetailComponent } from './notes-detail/notes-detail.component'
 import { NotesEditComponent } from './notes-edit/notes-edit.component'
 import { NotesNewComponent } from './notes-new/notes-new.component'
+import { UserLoginComponent } from './user-login/user-login.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'notes-edit/:id',
     component: NotesEditComponent,
     data: { title: 'Edit note' }
+  },
+  {
+    path: 'user-login',
+    component: UserLoginComponent,
+    data: { title: 'User Login' }
   },
   { path: '',
     redirectTo: '/notes',

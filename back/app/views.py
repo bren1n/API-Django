@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Note
-from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from .serializers import *
 from rest_framework import permissions
 
@@ -45,3 +45,14 @@ def notes(request):
            serializer.save()
            return Response(serializer.data)
        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def user_id(request, username, password):
+    try:
+        user = authenticate(username=username, password=password)
+    except user is None:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = UserSerializer(user, context={'request': request})
+        return Response(serializer.data)

@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { NotesComponent } from './notes/notes.component';
@@ -41,6 +42,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     MatIconModule,
     MatListModule,
     MatDividerModule,
+    MatMenuModule,
     FormsModule,
     HttpClientModule
   ],

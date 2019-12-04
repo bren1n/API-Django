@@ -1,8 +1,8 @@
 <mat-list *ngFor="let note of notes" color='primary'>
     <mat-list-item>{{ note.title }}
         <span style="flex: 1 1 auto;"></span>
-        <button mat-raised-button routerLink="/notes-detail/{{ note.id }}" routerLinkActive="active" color="primary"><i class="material-icons">search</i> View</button>
-        <button mat-raised-button routerLink="/notes-edit/{{ note.id }}" routerLinkActive="active" style="margin-left: 10px;" color="background"><i class="material-icons">edit</i> Edit</button>
+        <button mat-raised-button routerLink="/notes-detail/{{ user_id }}/{{ note.id }}" routerLinkActive="active" color="primary"><i class="material-icons">search</i> View</button>
+        <button mat-raised-button routerLink="/notes-edit/{{ user_id }}/{{ note.id }}" routerLinkActive="active" style="margin-left: 10px;" color="background"><i class="material-icons">edit</i> Edit</button>
         <button mat-raised-button (click)="deleteNote(note.id)" style="margin-left: 10px;" color="warn"><i class="material-icons">delete</i> Delete</button>
     </mat-list-item>
     <mat-divider></mat-divider>

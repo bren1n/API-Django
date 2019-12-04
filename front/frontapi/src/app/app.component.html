@@ -4,10 +4,17 @@
   <span style="flex: 1 1 auto;"></span>
   <mat-nav-list style="padding: 0;">
 
-    <a mat-list-item routerLink="/notes-new" routerLinkActive="active"
+    <a *ngIf="user_id" mat-list-item routerLink="/notes-new" routerLinkActive="active"
       style="display: inline-block; width: auto; height: auto; color: #ffffff;">Add note</a>
-    <a mat-list-item routerLink="/notes" routerLinkActive="active"
+    <a *ngIf="user_id" mat-list-item routerLink="/notes/{{ user_id }}" routerLinkActive="active"
       style="display: inline-block; width: auto; height: auto; color: #ffffff">List notes</a>
+    <a *ngIf="!user_id" mat-list-item routerLink="/user-login" routerLinkActive="active"
+      style="display: inline-block; width: auto; height: auto; color: #ffffff">Log in</a>
+    <a *ngIf="user_id" mat-list-item [matMenuTriggerFor]="menu"
+      style="display: inline-block; width: auto; height: auto; color: #ffffff">Hello, {{ username }}</a>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="signOut()">Sign out</button>
+    </mat-menu>
   </mat-nav-list>
 </mat-toolbar>
 

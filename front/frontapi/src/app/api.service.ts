@@ -19,24 +19,24 @@ export class ApiService {
     })
   }
 
-  getNotes() {
-    return this.http.get<any[]>(`${this.apiUrl}/notes`);
+  getNotes(user_id) {
+    return this.http.get<any[]>(`${this.apiUrl}/notes/${user_id}`);
   }
 
-  getNote(id) {
-    return this.http.get<Note>(`${this.apiUrl}/notes/${id}`)
+  getNote(user_id, id) {
+    return this.http.get<Note>(`${this.apiUrl}/notes/${user_id}/${id}`)
   }
 
   addNote(note) {
-    return this.http.post<Note>(`${this.apiUrl}/notes/`, JSON.stringify(note), this.httpOptions)
+    return this.http.post<Note>(`${this.apiUrl}/notes`, JSON.stringify(note), this.httpOptions)
   }
 
-  updateNote(id, note) {
-    return this.http.put<Note>(`${this.apiUrl}/notes/${id}`, JSON.stringify(note), this.httpOptions)
+  updateNote(user_id, id, note) {
+    return this.http.put<Note>(`${this.apiUrl}/notes/${user_id}/${id}`, JSON.stringify(note), this.httpOptions)
   }
 
-  deleteNote(id) {
-    return this.http.delete<Note>(`${this.apiUrl}/notes/${id}`)
+  deleteNote(id, user_id) {
+    return this.http.delete<Note>(`${this.apiUrl}/notes/${user_id}/${id}`)
   }
 
   authenticateUser(username, password) {

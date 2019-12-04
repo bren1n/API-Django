@@ -10,15 +10,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NotesEditComponent implements OnInit {
   id = this.actRoute.snapshot.params['id'];
   note: any = {};
+  user = parseInt(sessionStorage.getItem('user'))
 
   constructor(private api: ApiService, private actRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.api.getNote(this.id).subscribe(data => { this.note = data })
+    this.api.getNote(this.user, this.id).subscribe(data => { this.note = data })
   }
 
   updateNote() {
-    return this.api.updateNote(this.id, this.note).subscribe(data => { this.router.navigate(['/notes']) })
+    return this.api.updateNote(this.user, this.id, this.note).subscribe(data => { this.router.navigate([`/notes/${this.user}`]) })
   }
 
 }

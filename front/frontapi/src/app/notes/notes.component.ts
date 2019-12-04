@@ -9,20 +9,21 @@ import { ApiService } from '../api.service';
 export class NotesComponent implements OnInit {
 
   notes: Array<any>;
+  user_id = parseInt(sessionStorage.getItem('user'));
 
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    this.getNotes();
+    this.getNotes(this.user_id);
   }
 
-  getNotes() {
-    this.api.getNotes().subscribe(data => this.notes = data);
+  getNotes(user_id) {
+    this.api.getNotes(user_id).subscribe(data => this.notes = data);
   }
 
   deleteNote(id) {
     if (window.confirm('Are you sure, you want to delete?')) {
-      return this.api.deleteNote(id).subscribe(data => { this.getNotes() });
+      return this.api.deleteNote(id, this.user_id).subscribe(data => { this.getNotes(this.user_id) });
     }
   }
 }

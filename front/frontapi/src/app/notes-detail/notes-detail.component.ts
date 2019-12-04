@@ -15,10 +15,10 @@ export class NotesDetailComponent implements OnInit {
   constructor(private api: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getNote(this.route.snapshot.params['id']);
+    this.getNote(parseInt(sessionStorage.getItem('user')), this.route.snapshot.params['id']);
   }
   
-  getNote(id: number) {
-    return this.api.getNote(id).subscribe(data => this.note = data);
+  getNote(user_id, id: number) {
+    return this.api.getNote(user_id, id).subscribe(data => this.note = data);
   }
 }

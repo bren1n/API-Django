@@ -18,8 +18,9 @@ export class UserLoginComponent implements OnInit {
 
   authenticateUser(username, password) {
     return this.api.authenticateUser(username, password).subscribe(data => {
-      this.router.navigate(['/notes'])
-    })
+      sessionStorage.setItem('user', data.id.toString()),
+      sessionStorage.setItem('username', data.username.toString()),
+      this.router.navigateByUrl(`/notes/${data.id}`)}
+      )
+    }
   }
-
-}

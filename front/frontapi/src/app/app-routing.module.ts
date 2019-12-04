@@ -8,12 +8,12 @@ import { UserLoginComponent } from './user-login/user-login.component';
 
 const routes: Routes = [
   {
-    path: 'notes',
+    path: 'notes/:user_id',
     component: NotesComponent,
     data: { title: 'Note list' }
   },
   {
-    path: 'notes-detail/:id',
+    path: 'notes-detail/:user_id/:id',
     component: NotesDetailComponent,
     data: { title: 'Note detail' }
   },
@@ -23,7 +23,7 @@ const routes: Routes = [
     data: { title: 'Add note' }
   },
   {
-    path: 'notes-edit/:id',
+    path: 'notes-edit/:user_id/:id',
     component: NotesEditComponent,
     data: { title: 'Edit note' }
   },
@@ -33,7 +33,7 @@ const routes: Routes = [
     data: { title: 'User Login' }
   },
   { path: '',
-    redirectTo: '/notes',
+    redirectTo: '/notes/:user_id',
     pathMatch: 'full'
   }
 ];
